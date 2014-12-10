@@ -40,7 +40,7 @@
 			<nav id="nav">
 				<ul class="container">
 					<li><span class="icon featured fa-paper-plane "></span></li>
-					<li><a href="#top">Airline562</a></li>
+					<li><a href="#/">Airline562</a></li>
 				</ul>
 			</nav>
 
