@@ -37,12 +37,26 @@
 	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><span class="icon featured fa-paper-plane "></span></li>
-					<li><a href="#/">Airline562</a></li>
-				</ul>
-			</nav>
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar fa-paper-plane"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="/">airline562</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
 
 		<!-- Home -->
 
@@ -59,7 +73,13 @@
 								<section class="box style1">
 									<div class="row">
 										<div class="12u">
+										@foreach($results as $flight)
+										<?php
+										$assetString1 = 'images/' .  $flight->airline_code . '.png';
+										$assetString1 = asset($assetString1);
+										 ?>
 											<table class="table table-striped">
+											
 											  <tr>
 											    <th>Airline</th>
 											  	<th>Flight Number</th>
@@ -67,11 +87,11 @@
 											    <th>Arrival</th>
 											    <th>Departure Time(Local)</th>
 											    <th>Arrival Time(Destination)</th>
-											    <th>Dureation(Hours)</th>
+											    <th>Duration(Hours)</th>
 											  </tr>
-											  @foreach($results as $flight)
+											  
 											  <tr>
-											  	<td>{{$flight->airline_code}}</td>
+											  	<td><img src="{{$assetString1}}" alt="" width="75" height='20' /></td>
 											    <td>{{$flight->num}}</td>
 											    <td>{{$flight->airport_departure}}</td> 
 											    <td>{{$flight->airport_destination}}</td>
@@ -79,8 +99,11 @@
 											    <td>{{date("H:i:s", strtotime($flight->departure_time) + $flight->destination_utc * 3600 + $flight->duration);}}</td>
 											    <td>{{number_format($flight->duration / 60, 2, '.', '')}}</td>											
 											  </tr>
-											  @endforeach
+
+											  
 											</table>
+											<br>
+											@endforeach
 										</div>
 									</div>
 								</section>

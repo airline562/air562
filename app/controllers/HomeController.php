@@ -119,22 +119,22 @@ class HomeController extends BaseController {
 		        $dayNum = 1;
 		        break;
 		    case "Mon":
-		        $dayNum = 1;
+		        $dayNum = 2;
 		        break;
 		    case "Tue":
-		        echo "i equals 2";
+		        $dayNum = 3;
 		        break;
 	        case "Wed":
-		        $dayNum = 1;
+		        $dayNum = 4;
 		        break;
 	        case "Thu":
-		        $dayNum = 1;
+		        $dayNum = 5;
 		        break;
 	        case "Fri":
-		        $dayNum = 1;
+		        $dayNum = 6;
 		        break;
 	        case "Sat":
-		        $dayNum = 1;
+		        $dayNum = 7;
 		        break;
 			}	
 
@@ -157,11 +157,13 @@ class HomeController extends BaseController {
 												FROM Flight x, Airport dest, Airport depart, City dest_city, City depart_city
 												WHERE x.airport_destination = '$destination' AND x.airport_departure = '$departure' AND x.airport_destination = dest.code AND x.airport_departure = depart.code AND dest.city_id = dest_city.id AND depart.city_id = depart_city.id AND x.days LIKE '%$date%' ORDER BY duration" ) );	
 
-
-				return View::make('single')->with('results', $results)
-										   ->with('deptCity', $deptCity)
-										   ->with('arrivalCity', $arrivalCity);
-
+				if(!empty($results)){
+					return View::make('single')->with('results', $results)
+											   ->with('deptCity', $deptCity)
+											   ->with('arrivalCity', $arrivalCity);
+				} else {
+					return View::make('none');
+				}
 			
 		} else {
 			//do a multi flight query
@@ -193,24 +195,28 @@ class HomeController extends BaseController {
 							ON con_city.id = merge_w_utc_orig.c_airp_city_id ) merge_w_utc_con
 							LEFT OUTER JOIN City dest_city
 							ON dest_city.id = merge_w_utc_con.d_airp_city_id ) all_merged
-							where ( ( ( TIME_TO_SEC(first_flight_dep_time) + (60 * first_flight_time) + (3600 * org_city_utc_offset) ) < ( TIME_TO_SEC(second_flight_dep_time) + (3600 * con_city_utc_offset ) ) )  ) ORDER by first_flight_time + second_flight_time LIMIT 100";
+							where ( ( ( TIME_TO_SEC(first_flight_dep_time) + (60 * first_flight_time) + (43200 + 3600 * org_city_utc_offset) ) < ( TIME_TO_SEC(second_flight_dep_time) + (43200 + 3600 * con_city_utc_offset ) ) )  ) ORDER by ((second_flight_dep_time + second_flight_time) - first_flight_time) LIMIT 25";
 
 // ORDER by first_flight_time + second_flight_time LIMIT 100
 
 
 			$results = $mysqli->query($sql);
 
-			$flights;
+			$flights = false;
 			while($row=$results->fetch_assoc()){
 		         $flights[] = $row;
 		    }
 		    $results->free();
 
-
-
-		     return View::make('multi')->with('results', $flights)
-										   ->with('deptCity', $deptCity)
-										   ->with('arrivalCity', $arrivalCity);
+		    if(!empty($flights)){
+		    	return View::make('multi')->with('results', $flights)
+										  ->with('deptCity', $deptCity)
+										  ->with('arrivalCity', $arrivalCity)
+										  ->with('deptCode', $departure)
+										  ->with('arriveCode', $destination);
+		    } else {
+		    	return View::make('none');
+		    }
 
 
 		}
