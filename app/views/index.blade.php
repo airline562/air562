@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Airline562</title>
+		<title>Kanoe</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
@@ -124,7 +124,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="/">airline562</a>
+		      <a class="navbar-brand" href="/">Kanoe</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -182,7 +182,8 @@
 			<div class="wrapper style2">
 				<article id="form-base">
 					<header>
-						<h2>Find your flight?</h2>
+						<h1>Kanoe</h1>
+						<h2>Because Riding Down A River Alone is BORING</h2>
 					</header>
 					<div class="container">
 						<div class="row">
@@ -200,7 +201,8 @@
 															{{ Form::text('p', '', ['id' =>  'p', 'placeholder' =>  'Enter Departure City'])}}
 														</div>
 														<div class="4u">
-															<input type="date" name="dept_date" id="detpdate" placeholder="Date" />
+
+															<input type="date" name="dept_date" min="date('Y-m-d')" id="detpdate" placeholder="Date" />
 														</div>
 													</div>
 													<div class="row">

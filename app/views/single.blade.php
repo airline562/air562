@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Airline562</title>
+		<title>Kanoe</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -47,7 +47,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="/">airline562</a>
+		      <a class="navbar-brand" href="/">Kanoe</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,7 +65,7 @@
 				<article id="form-base">
 					<header>
 						<h2>Here are some flights that might work for you.</h2>
-						<h3>{{$deptCity}} to {{$arrivalCity}}</h3>
+						<h3><!-- <img src="{{asset('images/flags/gb.gif')}}" alt="" width="16" height='11' /> -->{{$deptCity}} to {{$arrivalCity}}</h3>
 					</header>
 					<div class="container">
 						<div class="row">

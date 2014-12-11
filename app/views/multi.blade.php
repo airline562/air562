@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Airline562</title>
+		<title>Kanoe</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -47,7 +47,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="/">airline562</a>
+		      <a class="navbar-brand" href="/">Kanoe</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
