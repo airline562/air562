@@ -116,6 +116,7 @@
 											    <td>{{date("H:i:s", strtotime($flight['second_flight_dep_time']) + ($flight['second_flight_time'] * 60) + ($flight['dest_city_utc_offset'] * 3600))}}</td>								
 											    <td>{{date('H:i', mktime(0,$flight['second_flight_time']))}}</td>	
 											  </tr>
+
 											 
 											</table>
 											 @endforeach

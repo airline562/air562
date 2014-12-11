@@ -182,7 +182,7 @@
 			<div class="wrapper style2">
 				<article id="form-base">
 					<header>
-						<h1>Kanoe</h1>
+						<h1>Kanoe <img src="{{'images/Canoe_Rental_logo_jpg.jpg'}}" alt="" width="75" /></h1>
 						<h2>Because Riding Down A River Alone is BORING</h2>
 					</header>
 					<div class="container">
